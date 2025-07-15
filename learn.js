@@ -29,21 +29,48 @@
 
 // dog1.bark();
 
-class Car {
-    constructor(name, color) {
-        this.name = name;
-        this.color = color;
+// class Car {
+//     constructor(name, color) {
+//         this.name = name;
+//         this.color = color;
+//     }
+
+//     bark() {
+//         console.log(`${this.name} + ịn ịn`);
+//     }
+
+// }
+
+
+// const car1 = new Car('Mercedes','Black');
+
+// console.log(car1);
+
+// car1.bark()
+
+class Calculator {
+    static value = 0;
+
+    static add(num) {
+        this.value += num;
+        return this;
     }
 
-    bark() {
-        console.log(`${this.name} + ịn ịn`);
+    static subtract(num) {
+        this.value -= num;
+        return this;
     }
 
+    static multiply(num) {
+        this.name *= num;
+        return this;
+    }
+
+    static getResult() {
+        return this.value;
+    }
 }
 
+const result = new Calculator().add(4).subtract(2).multiply(3).getResult()
 
-const car1 = new Car('Mercedes','Black');
-
-console.log(car1);
-
-car1.bark()
+console.log(result);
