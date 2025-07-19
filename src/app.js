@@ -5,11 +5,8 @@ app.use(bodyParser.json());
 
 
 
-app.get('/khiem', (req, res) => {
-    console.log('client is calling a API');
-    res.send('Hello World!')
-})
 
+app.use("/v1/auth",require("./app/v1/routes"))
 
 
 module.exports = app;
