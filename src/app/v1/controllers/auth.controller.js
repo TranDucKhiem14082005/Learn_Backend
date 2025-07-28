@@ -19,11 +19,13 @@ class authController {
 
      login(req, res) {
         const {username, password} = req.body;
-        const result = authService.login(username,password);
 
-        return res.status(200).json({
+        const result = authService.login(username, password);
+
+        return res.status(result.status).json({
             message: result.message
         })
+
     }
 }
 

@@ -16,7 +16,7 @@ class authService {
         // 2. check existing user
 
         const user = authModel.getUser(username);
-        console.log(user);
+        
 
         if(user) {
             return {
@@ -34,12 +34,11 @@ class authService {
     }
 
     login(username, password) {
-
         if(!username || !password) {
             return {
                 success: false,
-                message: "Username and passsword are required",
-                status: 400,
+                message: "Username , password are required",
+                status: 400
             }
         }
 
@@ -47,25 +46,27 @@ class authService {
 
         if(!user) {
             return {
-                success: false,
-                message: "Username not exists",
-                status: 400,
+                succes: false,
+                message: "username not exits",
+                status: 400
             }
         }
 
-        //check password
 
-        if(user.password != password) {
+        //3. check password true
+        if(user.password !== password) {
             return {
-                success: false,
-                message: "Username or Password are incorrect",
-                status: 400,    
+                succes: false,
+                message: "password is incorrect",
+                status: 400
             }
         }
 
-        return {    
-            message: 'login success'
-        }
+       return {
+        message: "login success",
+        status: 200
+       }
+       
     }
 }
 
