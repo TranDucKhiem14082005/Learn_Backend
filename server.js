@@ -4,7 +4,6 @@ const appConstants = require("./src/constants/app.constant");
 
 
 
-// const port = appConstants.PORT;
 
  const port = appConstants.PORT;
 app.listen(port, () => {

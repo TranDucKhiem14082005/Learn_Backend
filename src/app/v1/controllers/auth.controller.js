@@ -1,30 +1,38 @@
 const authService = require("../services/auth.service");
 
 class authController {
-     register(req, res) {
+    
+    register(req, res) {
+
         const {username, password} = req.body;
+
         const result = authService.register(username,password);
 
         if(result.success === false) {
             return res.status(result.status).json({
-                message: result.message,
+                message: result.message
             })
         }
-
         return res.status(201).json({
-            message: "User created",
-            data: result,
+            message: "created user success",
+            data: result
         })
+
     }
 
      login(req, res) {
-        const {username, password} = req.body;
+       const {username, password} = req.body;
+       const result = authService.login(username,password);
 
-        const result = authService.login(username, password);
+          if(result.success === false) {
+            return res.status(result.status).json({
+                message: result.message
+            })
+        }
 
-        return res.status(result.status).json({
+        return res.status(200).json({
             message: result.message
-        })
+        }) 
 
     }
 }
