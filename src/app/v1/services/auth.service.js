@@ -11,6 +11,15 @@ class authService {
             } 
         }
 
+        if(password < 6) {
+            return {
+                success: false,
+                message: 'you can set password again',
+                status: 400
+            }
+        }
+
+
         const user = authModel.getUser(username);
 
         if(user) {

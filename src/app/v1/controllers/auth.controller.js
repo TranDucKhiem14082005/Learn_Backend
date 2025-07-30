@@ -6,17 +6,20 @@ class authController {
 
         const {username, password} = req.body;
 
-        const result = authService.register(username,password);
+        const result = authService.register(username, password);
 
         if(result.success === false) {
             return res.status(result.status).json({
-                message: result.message
+                message: result.message,
+                
             })
         }
-        return res.status(201).json({
+
+        return res.status(200).json({
             message: "created user success",
             data: result
         })
+
 
     }
 
