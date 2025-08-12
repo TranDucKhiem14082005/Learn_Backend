@@ -1,0 +1,31 @@
+const {Pool} = require('pg');
+const dbConfigPG = require('../configs/db.config');
+
+class PgDatabase {
+    constructor() {
+        this.pool = new Pool({
+            host: dbConfigPG.host,
+            port: dbConfigPG.port,
+            user: dbConfigPG.user,
+            password: dbConfigPG.password,
+            database: dbConfigPG.database,
+            ssl: {
+                rejectUnauthorized: false // Set to true in production with proper SSL certificates
+            },
+            max: 20,
+            idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
+            connectionTimeoutMillis: 2000 // Return an error after 2 seconds if connection could not be established
+        });
+    }
+
+    async connect() {
+        try{
+
+        }catch(error) {
+
+        }
+    }
+
+}
+
+module.exports = PgDatabase;

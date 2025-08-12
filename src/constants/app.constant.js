@@ -1,5 +1,5 @@
 const appConstants = {
-    PORT: 5000
+    PORT: process.env.PORT,
 }
 
 module.exports = appConstants;
