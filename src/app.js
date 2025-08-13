@@ -4,12 +4,10 @@ const PgDatabase = require('./database/pg.database');
 const app = express();
 app.use(bodyParser.json());
 
-const pgDatabaseInstance = new PgDatabase();
-pgDatabaseInstance.connectDB();
+PgDatabase.connectDB();
+
 
 app.use('/v1/auth', require('./app/v1/routes'));
 
 
 module.exports = app;
-
-

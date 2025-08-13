@@ -34,8 +34,8 @@ class authService {
 
         return  {username, password}
     }
-   
-    login(username, password) {
+
+    async login(username, password) {
 
         if(!username || !password) {
             return {
@@ -45,7 +45,8 @@ class authService {
             }
         }
 
-         const user = authModel.getUser(username);
+         const user = await authModel.getUser(username);
+
 
 
         if(!user) {
@@ -56,16 +57,10 @@ class authService {
             }
         }
 
-        if(user.password !== password) {
-            return {
-                success: false,
-                message: "password is incorect",
-                status: 400
-            }
-        }
-
+     
         return {
-            message: 'login success'
+            message: 'login success',
+            user
         }
     }
 }

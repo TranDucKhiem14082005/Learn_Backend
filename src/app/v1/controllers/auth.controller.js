@@ -23,10 +23,10 @@ class authController {
 
     }
 
-     login(req, res) {
+    async login(req, res) {
        const {username, password} = req.body;
 
-       const result = authService.login(username, password);
+       const result = await authService.login(username, password);
 
        if(result.success === false) {
         return res.status(result.status).json({
@@ -34,9 +34,7 @@ class authController {
         })
        }
 
-       return res.status(200).json({
-            message: result. message
-       })
+       return res.status(200).json(result);
 
     }
 }
