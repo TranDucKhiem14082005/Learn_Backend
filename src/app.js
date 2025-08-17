@@ -8,6 +8,7 @@ PgDatabase.connectDB();
 
 
 app.use('/v1/auth', require('./app/v1/routes'));
+app.use('/v1/user', require('./app/v1/routes/user'));
 
 
 module.exports = app;
