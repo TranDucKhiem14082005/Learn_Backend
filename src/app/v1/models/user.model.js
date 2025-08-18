@@ -33,10 +33,14 @@ class userModel {
     }
 
     static async deleteUser(userId) {
-        const result = await PgDatabase.pool.query('DELETE FROM users WHERE id = $1 RETURNING *',
-            [userId]
-        );
-           return result.rows[0];    
+       try {
+            const result = await PgDatabase.pool.query('DELETE FROM users WHERE id = $1 RETURNING *',
+                [userId]
+            );
+            return result.rows[0];
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 }

@@ -53,19 +53,35 @@ class userService {
     }
 
     async updateUser({userId, name, email}) {
+        if(!userId) {
+            return { error: "User ID is required" };
+        }
+
         const user = await userModel.updateUser(userId, name, email);
 
         if(!user) {
-            return {error: "User not updated"}
+            return { error: "User not updated" };
         }
+
+        return {
+            message: "User updated successfully",
+            user
+        };
     }
 
-     async deleteUser({userId}) {
-        const user = await userModel.deleteUser(userId);
-        if(!user) {
-            return {error: "User not deleted"}
-        }
+   async deleteUser(userId) {
+    if (!userId) {
+        return { error: "User ID is required" };
     }
+
+    const user = await userModel.deleteUser(userId);
+
+    if (!user) {
+        return { error: "User not found or already deleted" };
+    }
+
+    return { message: "User deleted successfully", user };
+}
 
 
 }
